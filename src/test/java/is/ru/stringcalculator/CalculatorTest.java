@@ -84,4 +84,17 @@ public class CalculatorTest {
         assertEquals(6, Calculator.add("//[;;;]\n1001;;;1003;;;2"));
         assertEquals(6, Calculator.add("//[******]\n1001******1003\n2"));
     }
+
+    @Test
+    public void testMultipleDelimiters(){
+        assertEquals(7, Calculator.add("//[;][%]\n1;2%3\n1"));
+        assertEquals(6, Calculator.add("//[*][;]\n1*2;3"));
+    }
+
+    @Test
+    public void testMultipleDelimitersAnyLength(){
+        assertEquals(7, Calculator.add("//[;;][%]\n1;;2%3\n1"));
+        assertEquals(6, Calculator.add("//[*****][****]\n1*****2****3"));
+        assertEquals(15, Calculator.add("//[;][**][%%%]\n1;2**3%%%4\n5"));
+    }
 }
