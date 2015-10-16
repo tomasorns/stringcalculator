@@ -78,4 +78,10 @@ public class CalculatorTest {
     public void testWhenNumbersAreLargerThan1000(){
         assertEquals(6, Calculator.add("//;\n1001;1002\n1003"));
     }
+
+    @Test
+    public void testDelimiterOfAnyLength(){
+        assertEquals(6, Calculator.add("//[;;;]\n1001;;;1003;;;2"));
+        assertEquals(6, Calculator.add("//[******]\n1001******1003\n2"));
+    }
 }
