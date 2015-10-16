@@ -3,11 +3,17 @@ public class Calculator {
 
 	public static int add(String text){
 
+
         String delimiter = ",";
 
         if(text.contains("//")){
             delimiter = text.substring(2,3);
             text = text.substring(4,text.length());
+        }
+
+        if(text.contains("-")){
+            String negatives = parseNegatives(splitNumbers(text, delimiter));
+            throw new IllegalArgumentException("Negatives not allowed: " + negatives);
         }
 
         if(text.equals("")){
@@ -41,5 +47,14 @@ public class Calculator {
         return numbers.replaceAll("\n",delimiter);
     }
 
+    private static String parseNegatives(String[] numbers){
+        String negatives = "";
+        for(String number : numbers){
+            if(toInt(number) < 0) {
+                negatives += number + ",";
+            }
+        }
+        return negatives.substring(0,negatives.length()-1);
+    }
 
 }
