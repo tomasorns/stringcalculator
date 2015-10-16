@@ -68,4 +68,14 @@ public class CalculatorTest {
         thrown.expectMessage("Negatives not allowed: -2");
         Calculator.add("-2");
     }
+
+    @Test
+    public void testWhenNumberIsLargerThan1000(){
+        assertEquals(3, Calculator.add("1003"));
+    }
+
+    @Test
+    public void testWhenNumbersAreLargerThan1000(){
+        assertEquals(6, Calculator.add("//;\n1001;1002\n1003"));
+    }
 }

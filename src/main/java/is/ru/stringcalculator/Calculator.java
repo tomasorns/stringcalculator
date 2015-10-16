@@ -28,7 +28,7 @@ public class Calculator {
 	}
 
 	private static int toInt(String number){
-		return Integer.parseInt(number);
+		return Integer.parseInt(number)%1000;
 	}
 
 	private static String[] splitNumbers(String numbers, String delimiter){
